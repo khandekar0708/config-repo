@@ -1,8 +1,7 @@
 server:
   port: 8084
 
-
-
+spring:
   kafka:
     bootstrap-servers: kafka:9092
 
@@ -14,6 +13,7 @@ server:
     url: jdbc:postgresql://postgres-database:5432/payment_service_db
     username: postgres
     password: Pass@123
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:

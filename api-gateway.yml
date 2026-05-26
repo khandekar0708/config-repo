@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+
+            - id: auth-service
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/api/auth/**
+
+            - id: auth-user-service
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/api/user/**
+
+            - id: auth-admin-service
+              uri: lb://AUTH-SERVICE
+              predicates:
+                - Path=/api/admin/**
+
+            - id: product-service
+              uri: lb://PRODUCT-SERVICE
+              predicates:
+                - Path=/api/products/**
+
+            - id: order-service
+              uri: lb://ORDER-SERVICE
+              predicates:
+                - Path=/api/orders/**
+
+            - id: payment-service
+              uri: lb://PAYMENT-SERVICE
+              predicates:
+                - Path=/api/payments/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka

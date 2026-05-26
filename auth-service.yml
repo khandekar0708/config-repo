@@ -2,10 +2,6 @@
 server:
   port: 8081
 
-spring:
-  application:
-    name: auth-service
-
   datasource:
     url: jdbc:postgresql://postgres-database:5432/auth_service_db
     username: postgres

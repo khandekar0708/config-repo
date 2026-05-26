@@ -33,47 +33,12 @@ resilience4j:
 
       orderServiceBreaker:
         registerHealthIndicator: true
-
         slidingWindowSize: 5
-
         minimumNumberOfCalls: 3
-
         failureRateThreshold: 50
-
         waitDurationInOpenState: 10s
-
         permittedNumberOfCallsInHalfOpenState: 2
-
         automaticTransitionFromOpenToHalfOpenEnabled: true
-
-jwt:
-  secret: myVeryStrongSecretKeyForJwtAuthentication123456789
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://discovery-server:8761/eurekaserver:
-  port: 8084
-
-spring:
-  kafka:
-    bootstrap-servers: kafka:9092
-
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
-  datasource:
-    url: jdbc:postgresql://postgres-database:5432/payment_service_db
-    username: postgres
-    password: Pass@123
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-
-    show-sql: true
 
 jwt:
   secret: myVeryStrongSecretKeyForJwtAuthentication123456789

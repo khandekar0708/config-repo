@@ -1,0 +1,34 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-database:5432/product_service_db
+    username: postgres
+    password: Pass@123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: kafka:9092
+
+    consumer:
+      group-id: product-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+      properties:
+        spring.json.trusted.packages: "*"
+
+jwt:
+  secret: myVeryStrongSecretKeyForJwtAuthentication123456789
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka

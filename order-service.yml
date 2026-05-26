@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-database:5432/order_service_db
+    username: postgres
+    password: Pass@123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: kafka:9092
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+jwt:
+  secret: myVeryStrongSecretKeyForJwtAuthentication123456789
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka

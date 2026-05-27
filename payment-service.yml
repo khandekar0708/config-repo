@@ -21,11 +21,29 @@ spring:
 
     show-sql: true
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+
+    username: khandekarom5505@gmail.com
+    password: xprj kipa lzkn yumo
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 management:
   endpoints:
     web:
       exposure:
-        include: health
+        include: health,circuitbreakers,metrics
+
+  health:
+    circuitbreakers:
+      enabled: true
 
 resilience4j:
   circuitbreaker:
